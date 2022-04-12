@@ -16,7 +16,7 @@ CFLAGS			=	-Wall -Wextra -Werror
 
 INCLUDE			=	-I include
 
-SRC				=	./ft_pipex.c
+SRC				=	./pipex.c
 
 OBJS			=	$(SRC:.c=.o)
 
