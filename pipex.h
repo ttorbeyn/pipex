@@ -35,4 +35,10 @@ char	*ft_strtrim(char const *s1, char const *set);
 //ft_strlem
 size_t	ft_strlen(const char *s);
 
+//ft_strdup
+char	*ft_strdup(const char *s1);
+
+//ft_strncmp
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
 #endif

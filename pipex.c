@@ -21,8 +21,8 @@ int path_set(t_data *data, char **env)
 	i = 0;
 	while (env[i])
 	{
-		if (!strncmp(env[i], "PATH=", 5))
-			data->path = strdup(env[i]);
+		if (!ft_strncmp(env[i], "PATH=", 5))
+			data->path = ft_strdup(env[i]);
 		i++;
 	}
 	if (data->path)
