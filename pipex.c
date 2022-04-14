@@ -3,23 +3,24 @@
 int	data_set(t_data *data, char **av)
 {
 	data->path = NULL;
+	data->cmd1 = av[3];
+	data->cmd2 = av[4];
 	data->fd_infile = open(av[1], O_RDONLY);
 	if (data->fd_infile < 0)
-		exit(EXIT_FAILURE);
+		ft_exit("Error file1");
 	data->fd_outfile = open(av[4], O_WRONLY | O_CREAT, 0777);
 	if (data->fd_outfile < 0)
-		exit(EXIT_FAILURE);
+		ft_exit("Error file2");
 	return (0);
 }
 
-int env_set(t_data *data, char **env)
+int path_set(t_data *data, char **env)
 {
 	int i;
 
 	i = 0;
 	while (env[i])
 	{
-		printf("%s\n", env[i]);
 		if (!strncmp(env[i], "PATH=", 5))
 			data->path = strdup(env[i]);
 		i++;
@@ -41,6 +42,6 @@ int	main(int ac, char **av, char **env)
 	if (ac != 5)
 		ft_exit("Too few arguments");
 	data_set(&data, av);
-	env_set(&data, env);
+	path_set(&data, env);
 	return (0);
 }

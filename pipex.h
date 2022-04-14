@@ -13,6 +13,8 @@ typedef struct s_data
 {
 	int		fd_infile;
 	int		fd_outfile;
+	char	*cmd1;
+	char	*cmd2;
 	char	*path;
 	char	**path_div;
 }				t_data;
