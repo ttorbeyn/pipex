@@ -15,6 +15,8 @@ typedef struct s_data
 	int		fd_outfile;
 	char	*cmd1;
 	char	*cmd2;
+	char 	*path_cmd1;
+	char 	*path_cmd2;
 	char	*path;
 	char	**path_div;
 }				t_data;
@@ -40,5 +42,8 @@ char	*ft_strdup(const char *s1);
 
 //ft_strncmp
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
+//ft_strjoin
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

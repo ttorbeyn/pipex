@@ -22,6 +22,7 @@ SRC				=	./pipex.c \
 					./libft/ft_strlen.c \
 					./libft/ft_strdup.c \
 					./libft/ft_strncmp.c \
+					./libft/ft_strjoin.c \
 					./ft_error.c
 
 OBJS			=	$(SRC:.c=.o)
