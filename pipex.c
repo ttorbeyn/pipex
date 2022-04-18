@@ -1,11 +1,15 @@
 #include "pipex.h"
 
-int	data_set(t_data *data, char **av)
+int	data_set(t_data *data, char **av, char **env)
 {
 	data->path = NULL;
-	data->cmd1 = ft_strjoin("/", av[2]);
-	data->cmd2 = ft_strjoin("/", av[3]);
+	data->env = env;
 	data->path_cmd1 = NULL;
+	data->path_cmd2 = NULL;
+	data->cmd1_arg = ft_split(av[2], ' ');
+	data->cmd2_arg = ft_split(av[3], ' ');
+	data->cmd1 = ft_strjoin("/", data->cmd1_arg[0]);
+	data->cmd2 = ft_strjoin("/", data->cmd2_arg[0]);
 	data->fd_infile = open(av[1], O_RDONLY);
 	if (data->fd_infile < 0)
 		ft_exit("Error infile");
@@ -41,10 +45,11 @@ int	ft_exec(t_data *data)
 	int	i;
 
 	i = 0;
-	while (execve(data->path_cmd1, NULL, NULL) == -1)
+	dup2(data->fd_infile, STDIN_FILENO);
+	while (execve(data->path_cmd1, data->cmd1_arg, data->env) == -1 && data->path_div[i])
 	{
 		data->path_cmd1 = ft_strjoin(data->path_div[i], data->cmd1);
-		printf("%s\n", data->path_cmd1);
+		//printf("%s\n", data->path_cmd1);
 		i++;
 	}
 	ft_exit("Command not found");
@@ -58,7 +63,7 @@ int	main(int ac, char **av, char **env)
 
 	if (ac != 5)
 		ft_exit("Not the right number of arguments");
-	data_set(&data, av);
+	data_set(&data, av, env);
 	path_set(&data, env);
 	ft_exec(&data);
 	return (0);

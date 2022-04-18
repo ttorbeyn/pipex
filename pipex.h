@@ -15,10 +15,13 @@ typedef struct s_data
 	int		fd_outfile;
 	char	*cmd1;
 	char	*cmd2;
+	char	**cmd1_arg;
+	char	**cmd2_arg;
 	char 	*path_cmd1;
 	char 	*path_cmd2;
 	char	*path;
 	char	**path_div;
+	char	**env;
 }				t_data;
 
 //ft_error
