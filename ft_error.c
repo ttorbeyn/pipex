@@ -18,27 +18,48 @@ int	ft_exit(char *error)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_free(t_data *data)
+static int	ft_free2(t_data *data)
 {
 	int	i;
 
-	i = 0;
-	while (data->path_div[i])
-		free(data->path_div[i++]);
-	free(data->path_div);
-	i = 0;
-	while (data->cmd1_arg[i])
-		free(data->cmd1_arg[i++]);
-	free(data->cmd1_arg);
-	i = 0;
-	while (data->cmd2_arg[i])
-		free(data->cmd2_arg[i++]);
-	free(data->cmd2_arg);
-	free(data->cmd1);
-	free(data->cmd2);
-	free(data->path);
-	free(data->path_trim);
-	free(data->path_cmd1);
-	free(data->path_cmd2);
+	if (data->path_div)
+	{
+		i = 0;
+		while (data->path_div[i])
+			free(data->path_div[i++]);
+		free(data->path_div);
+	}
+	if (data->cmd1_arg)
+	{
+		i = 0;
+		while (data->cmd1_arg[i])
+			free(data->cmd1_arg[i++]);
+		free(data->cmd1_arg);
+	}
+	if (data->cmd2_arg)
+	{
+		i = 0;
+		while (data->cmd2_arg[i])
+			free(data->cmd2_arg[i++]);
+		free(data->cmd2_arg);
+	}
+	return (0);
+}
+
+int	ft_free(t_data *data)
+{
+	ft_free2(data);
+	if (data->cmd1)
+		free(data->cmd1);
+	if (data->cmd2)
+		free(data->cmd2);
+	if (data->path)
+		free(data->path);
+	if (data->path_trim)
+		free(data->path_trim);
+	if (data->path_cmd1)
+		free(data->path_cmd1);
+	if (data->path_cmd2)
+		free(data->path_cmd2);
 	return (0);
 }

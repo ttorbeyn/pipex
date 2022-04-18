@@ -23,9 +23,9 @@ static int	data_set(t_data *data, char **av, char **env)
 	data->cmd1 = ft_strjoin("/", data->cmd1_arg[0]);
 	data->cmd2 = ft_strjoin("/", data->cmd2_arg[0]);
 	data->fd_infile = open(av[1], O_RDONLY);
+	data->fd_outfile = open(av[4], O_WRONLY | O_TRUNC | O_CREAT, 0777);
 	if (data->fd_infile < 0)
 		ft_exit("Error infile");
-	data->fd_outfile = open(av[4], O_WRONLY | O_TRUNC | O_CREAT, 0777);
 	if (data->fd_outfile < 0)
 		ft_exit("Error outfile");
 	if (pipe(data->pipe) != 0)
