@@ -19,9 +19,9 @@ int	data_set(t_data *data, char **av, char **env)
 	return (0);
 }
 
-int path_set(t_data *data, char **env)
+int	path_set(t_data *data, char **env)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (env[i])
@@ -49,7 +49,6 @@ int	ft_exec(t_data *data)
 	while (execve(data->path_cmd1, data->cmd1_arg, data->env) == -1 && data->path_div[i])
 	{
 		data->path_cmd1 = ft_strjoin(data->path_div[i], data->cmd1);
-		//printf("%s\n", data->path_cmd1);
 		i++;
 	}
 	ft_exit("Command not found");
@@ -58,8 +57,7 @@ int	ft_exec(t_data *data)
 
 int	main(int ac, char **av, char **env)
 {
-	t_data data;
-
+	t_data	data;
 
 	if (ac != 5)
 		ft_exit("Not the right number of arguments");

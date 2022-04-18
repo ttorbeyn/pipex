@@ -8,7 +8,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if ((!s1) || (!s2))
 		return (NULL);
-	if (!(new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+	new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new)
 		return (NULL);
 	i = 0;
 	while (s1[i])
