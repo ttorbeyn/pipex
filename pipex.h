@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttorbeyn <ttorbeyn@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/18 15:59:49 by ttorbeyn          #+#    #+#             */
+/*   Updated: 2022/04/18 15:59:49 by ttorbeyn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
@@ -20,12 +32,17 @@ typedef struct s_data
 	char	*path_cmd1;
 	char	*path_cmd2;
 	char	*path;
+	char	*path_trim;
 	char	**path_div;
 	char	**env;
+	int		pipe[2];
+	pid_t	pid_child;
+	pid_t	pid_parent;
 }				t_data;
 
 //ft_error
 int		ft_exit(char *error);
+int		ft_free(t_data *data);
 
 //libft
 

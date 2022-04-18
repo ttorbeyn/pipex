@@ -72,11 +72,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	x = 0;
 	while (s1[i] && i <= len)
-	{
-		new[x] = s1[i];
-		x++;
-		i++;
-	}
+		new[x++] = s1[i++];
 	new[x] = '\0';
 	return (new);
 }
