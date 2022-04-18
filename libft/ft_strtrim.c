@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../includes/pipex.h"
 
 static size_t	ft_checkstart(char const *s1, char const *set)
 {
